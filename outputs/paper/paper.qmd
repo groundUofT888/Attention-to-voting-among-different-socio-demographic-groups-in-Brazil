@@ -55,6 +55,8 @@ election <- read.csv(data_path)
 
 ## Methodology
 
+This paper will replicate the survey data that was originally collected for
+
 ## Features
 
 # Results
@@ -64,8 +66,8 @@ Data from Wave 4 of surveys were used to show correlation
 \renewcommand{\arraystretch}{2}
 
 ```{r}
-#| label: tbl-terc
-#| tbl-cap: "Dividing respondents into three terciles by their municipality's gender ratio"
+#| label: figl-terc
+#| fig-cap: "Dividing respondents into three terciles by their municipality's gender ratio"
 #| echo: false
 #| message: false
 #| warning: false
@@ -103,8 +105,8 @@ p
 \clearpage
 
 ```{r}
-#| label: tbl-stmt
-#| tbl-cap: "Statements used for surveying respondents"
+#| label: fig-ecoil
+#| fig-cap: unemployment 
 #| echo: false
 #| message: false
 #| warning: false
