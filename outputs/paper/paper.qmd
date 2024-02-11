@@ -1,7 +1,7 @@
 ---
 title: "term papaer 2"
 author: "Hao wang"
-thanks: "Code and data are available at: https://github.com/groundUofT888/Term-Paper-2.git ; Replication on Social Science Reproduction platform available at: https://doi.org/10.48152/ssrp-qg85-cb34"
+thanks: "Code and data are available at: https://github.com/groundUofT888/Term-Paper-2.git ; Replication on Social Science Reproduction platform available at: www.aeaweb.org/articles?id=10.1257/app.20210529"
 date: "February 12, 2024"
 date-format: long
 format: 
