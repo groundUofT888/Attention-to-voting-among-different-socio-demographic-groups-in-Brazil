@@ -31,7 +31,6 @@ bibliography: references.bib
 install.packages("here")
 install.packages("dplyr") 
 install.packages("tidyverse")
-install.packages("rdrobust")
 installed.packages("ggplot2")
 # install.packages("knitr")
 
