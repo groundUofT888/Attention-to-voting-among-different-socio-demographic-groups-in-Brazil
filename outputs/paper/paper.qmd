@@ -66,7 +66,7 @@ Data from Wave 4 of surveys were used to show correlation
 
 ```{r}
 #| label: figl-terc
-#| fig-cap: "Dividing respondents into three terciles by their municipality's gender ratio"
+#| fig-cap: "Income per capita"
 #| echo: false
 #| message: false
 #| warning: false
@@ -79,7 +79,7 @@ p + geom_smooth(method = "lm", color = "red")
 
 ```{r}
 #| label: fig-excess
-#| fig-cap: "Proportion of respondents who see refugees as a mating threat by age group and tercile"
+#| fig-cap: "Low income rate"
 #| echo: false
 #| message: false
 #| warning: false
@@ -105,7 +105,7 @@ p
 
 ```{r}
 #| label: fig-ecoil
-#| fig-cap: unemployment 
+#| fig-cap: Unemployment rate
 #| echo: false
 #| message: false
 #| warning: false
@@ -118,7 +118,7 @@ p + geom_smooth(method = "lm", color = "red")
 
 ```{r}
 #| label: fig-statements
-#| fig-cap: "Proportion of respondents who agree with varying hate crime support statements"
+#| fig-cap: "University degree"
 #| echo: false
 #| message: false
 #| warning: false
