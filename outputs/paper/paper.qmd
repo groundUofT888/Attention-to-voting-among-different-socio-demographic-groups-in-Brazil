@@ -30,8 +30,10 @@ bibliography: references.bib
 # install.packages('readr')
 install.packages("here")
 install.packages("dplyr") 
+install.packages("tidyr") 
 install.packages("tidyverse")
 installed.packages("ggplot2")
+install.packages("kableExtra") 
 # install.packages("knitr")
 
 
@@ -41,9 +43,13 @@ library(tidyverse)
 library(knitr)
 library(rdrobust)
 library(ggplot2)
+library(tidyr) 
+library(kableExtra) 
 
 data_path <- here("outputs", "edited_data", "election_cleaned.csv")
 election <- read.csv(data_path)
+data_path2 <- here("outputs", "edited_data", "schools.csv") 
+school <- read.csv(data_path2)
 ```
 
 # Introduction
@@ -57,6 +63,8 @@ election <- read.csv(data_path)
 This paper will replicate the survey data that was originally collected for
 
 ## Features
+
+The original survey data assessed participants on 60 variables
 
 # Results
 
@@ -101,8 +109,6 @@ p
 
 ```
 
-\clearpage
-
 ```{r}
 #| label: fig-ecoil
 #| fig-cap: Unemployment rate
@@ -116,6 +122,36 @@ p <- ggplot(data = election, aes(x = tse_code, y = unempl_post)) +
 p + geom_smooth(method = "lm", color = "red")
 ```
 
+\clearpage
+
+```{r}
+#| label: fig-hist
+#| fig-cap: histogram
+#| echo: false
+#| message: false
+#| warning: false
+data_long <- pivot_longer(election, cols = c("inc_0_50_post", "inc_post", "unempl_post"), 
+                          names_to = "Variable", values_to = "Value")
+
+ggplot(data_long, aes(x=Value, fill=Variable)) + 
+  geom_histogram(position="dodge", binwidth=1) + 
+  facet_wrap(~ Variable, scales = "free_x") + 
+  theme_minimal() + 
+  ggtitle("hist") +
+  xlab("Value") +
+  ylab("Frequency") +
+  scale_fill_manual(values = c("inc_0_50_post" = "blue", "inc_post" = "red", "unempl_post" = "green"))
+```
+
+```{r}
+#| label: fig-hist
+#| tbl-cap: histogram
+#| echo: false
+#| message: false
+#| warning: false
+
+```
+
 ```{r}
 #| label: fig-model
 #| fig-cap: "umemployment rate Vs low income rate"
@@ -123,10 +159,20 @@ p + geom_smooth(method = "lm", color = "red")
 #| message: false
 #| warning: false
 
-p <- ggplot(data = election, aes(x = inc_0_50_post, y = unempl_post)) +
-  geom_point(color = "blue") +  # Scatter plot points
-  labs(x = "Low income rate", y = "Unemployment rate")
-p + geom_smooth(method = "lm", color = "red")
+cutoff_value <-60000
+school$cutoff_side <- ifelse(school$tse_code < cutoff_value, "Below", "Above")
+
+p <- ggplot(data = school, aes(x = tse_code, y = MAT_DROP_mean)) +
+  geom_point(color = "blue") +  
+  labs(x = "Number of registered voters", y = "Drop-our rate") +
+  geom_vline(xintercept = cutoff_value, linetype = "dashed", color = "black") + # Cutoff line
+  geom_smooth(data = subset(election, tse_code < cutoff_value), 
+              aes(x = tse_code, y = inc_0_50_post), 
+              method = "lm", color = "red") + 
+  geom_smooth(data = subset(election, tse_code >= cutoff_value), 
+              aes(x = tse_code, y = inc_0_50_post), 
+              method = "lm", color = "red") 
+p 
 ```
 
 \renewcommand{\arraystretch}{1.5}
