@@ -59,7 +59,6 @@ This study provides valuable insights into the socio-economic and political dyna
 \newpage
 # Introduction
 
-In 2022, Brazil's presidential election broke new grounds with an unprecedented turnout of over 150 million voters, capturing the attention of national and international media. The world had seen not just about the political tactics of the candidates, but also the public's vested interest in how these elections could shape their day-to-day lives. This paper aims to study the influence of Brazil's electoral system on three critical socio-economic indicators: income level, unemployment rate and educational resources.With a comprehensive look at recent data and trends, we will investigate how the details of voting and representation create a chain reaction throughout the economy, affecting everything from job opportunities to the quality of education. By collecting together statistical analysis with real-world implications, we'll provide a clearer picture of the electoral system's impact on the Brazilian populace and discuss the broader implications of these findings on social equality and economic stability.
 
 # Data
 
@@ -272,17 +271,52 @@ Analyzing the histogram in [@fig-hist], we see distinct distributions for three 
 
 ## Findings
 
-## Canadian Relevance: Case Study on Alberta's
+In the paper, Moya Chin uses the regression discontinuity design to compare single-round and two-round elections in Brazil. Our paper makes two findings based on Moya Chin's data and theory. 
 
-## population ratios, dating markets and anti-refugee sentiments
+1. The two rounds of elections in Brazil have a good impact on Brazil's downstream economy.
+
+2. Candidates prefer to attract low-income people and people with low education during the election.
+
+
+We found from Moya Chin's paper that politicians' behavior during elections affects the provision of local public facilities, but the allocation of these resources changes when politicians are elected.
+
+We find that two-round elections can incentivize candidates to provide resources for downstream economic and public education. In terms of education, the dropout rate has been significantly reduced and the literacy rate has increased. According to census data in 2000 and 2010, the primary school literacy rate has been on an upward trend, while the dropout rate has been on a downward trend. According to the school census, the school's infrastructure has been significantly improved during the campaign, and public facilities such as the school's library, gymnasium, and classrooms have received more funding. Resource levels in public schools have increased and differences between schools have become smaller.
+
+In terms of the provision of public goods, we found that in the two-round election of urban school resource allocation compared with the single-round municipal government, these schools receive more resources in terms of equipment and infrastructure, and these resources are more distributed among schools. fair. Politicians provide a large number of products such as computers, photocopiers, projectors, etc. These products reduce dropout rates and increase literacy rates. These grants have improved local education standards and have a positive impact on local education. This shows that two rounds of elections will bring about more public goods provision, which will have a positive impact on education. These improvements in public education are important for long-term socioeconomic development because better education can create a more highly skilled workforce in the future and may reduce structural unemployment in the future.
+
+However, we find that two rounds of elections have limited economic impact in the mid-term. According to the Figure, it can be seen that per capita income increased during the election period, and the number of low-income people decreased compared with before. But these results were not evident in the statistics. This suggests that while two rounds of elections will improve the downstream economy, changes in income levels and unemployment will take longer to materialize.
+
+We also found politicians in Brazil using political manipulation and tactics in elections. In Brazil, low-income groups make up a larger share of the population, so attracting votes from this group could have a significant impact on election results. Therefore, even if high-income groups pay more attention to elections than low-income groups, politicians will allocate more resources to the majority of voters.
+
+We believe that Brazil’s two rounds of elections will bring short-term benefits to the downstream economy and education. However, long-term changes in Brazil’s economic and social problems require long-term observation.
 
 ## Ethical Implications
+  
+  The datasets and original sources used in their paper come from Brazil demographic censuses and Brazil school census. Demography refers to summarizing the demographic characteristics of a community, such as gender, age, race, education level, socioeconomic status, etc. Ethical issues may arise if used improperly during the collection, analysis, interpretation, and dissemination of demographic data. 
+  
+  Demographics impact minority communities, which can lead to structural inequalities. When analyzing demographic variables, the author selected specific variables for analysis based on his research questions and hypotheses. However, these highly characteristic data will have a negative impact on some social groups. For example, high income, low income, dropout rate, etc. This may reinforce social hierarchies in which social groups are compared, exacerbating prejudice and stereotypes and causing harm to minority populations. In the paper, the author compares the interest of high-income people and low-income people in voting. This may cause certain social conflicts and encourage the idea of inequality among different groups. When explaining differences between social groups in the conclusion of the author's paper, it can lead to increased social conflict.
+  
 
 ## Accounting for Bias
 
+In the paper, Moya Chin proposes a stylized model that explores the motivations of politicians to appeal to a wider range of voters in elections and to provide public goods in different ways. The author uses this model to observe the Economic Consequences of Electoral Rules in Brazil. The data used by the author mainly comes from Brazil demographic censuses, Brazil school Census, and Brazil municipal election data. Bias can occur when collecting quantitative and qualitative data. 
+
+The problem with these data sets and original sources is that the variables used by the authors to construct the equipment index come from the Brazilian School Census and the Brazilian demographic censuses. Considering Brazil's national conditions and the government's influence on the region, Response Bias may exist in the data set of Brazil demographic censuses. Census respondents may choose not to participate in the census or provide inaccurate information because of privacy concerns or distrust of the government. The school census data comes from students in schools. Considering the lack of educational resources in poor areas of Brazil, there will be a sampling frame bias. The earliest census data used by the author is from 1980. At that time, in some remote or poor areas, it may be more difficult for enumerators to reach or collect data due to lack of infrastructure and information technology. This may lead to underestimation or inaccurate population data in these areas, and the sample may not be representative of the characteristics of the entire population.
+
+
 ## Limitations
 
+Our analysis is based on a data set from the Moya Chin literature, so most of our analysis is limited to the original survey situation.
+
+Because the data are not comprehensive enough, we cannot compare with many variables in the original data, such as whether political intervention and media propaganda affect voters' thoughts and voting results. Excessive propaganda of policies and political interference are suspected of manipulating voters and leading to distorted election results. Also the political contributions a politician receives during an election can influence the outcome of the election.
+
+The model created by Moya Chin cannot be fully applied during our analysis, which results in our analysis not being as complete as Moya Chin described. So we have to give up some variables.
+
+
 ## Future Research
+
+We believe that this research direction can receive more investment in the future. We hope that the relationship between electoral systems, education, and socioeconomic outcomes can be further explored in the future. We hope to observe and predict the impacts of elections over the long term to fully understand the impact of the electoral system on economic indicators, and to reveal the possible long-term effects of changes in the electoral system.
+
 
 \clearpage
 
