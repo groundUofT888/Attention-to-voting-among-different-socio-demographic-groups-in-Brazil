@@ -29,21 +29,16 @@ bibliography: references.bib
 # install.packages('readr')
 install.packages("here")
 install.packages("dplyr") 
-install.packages("tidyr") 
 install.packages("tidyverse")
 installed.packages("ggplot2")
-install.packages("kableExtra") 
 # install.packages("knitr")
 
 
 library(here)
 library(dplyr)
 library(tidyverse)
-library(knitr)
-library(rdrobust)
+
 library(ggplot2)
-library(tidyr) 
-library(kableExtra) 
 
 data_path <- here("outputs", "edited_data", "election_cleaned.csv")
 election <- read.csv(data_path)
@@ -162,14 +157,6 @@ ggplot(data_long, aes(x=Value, fill=Variable)) +
   xlab("Value") +
   ylab("Frequency") +
   scale_fill_manual(values = c("inc_0_50_post" = "blue", "inc_post" = "red", "unempl_post" = "green"))
-```
-
-```{r}
-#| label: fig-hist
-#| tbl-cap: histogram
-#| echo: false
-#| message: false
-#| warning: false
 
 ```
 
