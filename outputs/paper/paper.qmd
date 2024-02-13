@@ -1,5 +1,4 @@
----
-title: "term papaer 2"
+title: "term paper 2"
 author: "Hao Wang  Siqi Fei Xuecheng Gao"
 thanks: "Code and data are available at: https://github.com/groundUofT888/Term-Paper-2.git ; Replication on Social Science Reproduction platform available at: www.aeaweb.org/articles?id=10.1257/app.20210529"
 date: "February 12, 2024"
