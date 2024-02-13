@@ -41,7 +41,7 @@ election <- read.csv(data_path)
 data_path2 <- here("outputs", "edited_data", "schools.csv")
 school <- read.csv(data_path2)
 ```
-\newpage
+
 \begin{center}
 \textbf{\large Abstract}
 \end{center}
@@ -300,6 +300,7 @@ We also found politicians in Brazil using political manipulation and tactics in 
 
 We believe that Brazil’s two rounds of elections will bring short-term benefits to the downstream economy and education. However, long-term changes in Brazil’s economic and social problems require long-term observation.
 
+\newpage
 ## Ethical Implications
   
   The datasets and original sources used in their paper come from Brazil demographic censuses and Brazil school census. Demography refers to summarizing the demographic characteristics of a community, such as gender, age, race, education level, socioeconomic status, etc. Ethical issues may arise if used improperly during the collection, analysis, interpretation, and dissemination of demographic data. 
