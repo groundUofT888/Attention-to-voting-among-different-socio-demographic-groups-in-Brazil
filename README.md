@@ -1,7 +1,7 @@
 # Attention to voting among different socio-demographic groups in Brazil
 
 ## Overview
-
+This repo features a reproduction of
 
 
 ## Guide to this repo
