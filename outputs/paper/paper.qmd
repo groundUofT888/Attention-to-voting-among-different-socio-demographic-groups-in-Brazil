@@ -1,7 +1,7 @@
 ---
 title: "Voting Patterns and Socio-Economic Tides: A Twenty-Year Analysis of Brazil's Developmental Dynamics"
 author: "Hao Wang / Siqi Fei / Xuecheng Gao"
-thanks: "Code and data are available at: https://github.com/groundUofT888/Term-Paper-2.git ; Replication on Social Science Reproduction platform available at: www.aeaweb.org/articles?id=10.1257/app.20210529"
+thanks: "Code and data are available at: https://github.com/groundUofT888/Term-Paper-2.git ; Replication on Social Science Reproduction platform available at: https://doi.org/10.48152/ssrp-qxvj-fz21"
 date: "February 12, 2024"
 date-format: long
 format: 
@@ -96,7 +96,6 @@ The data set offers a comprehensive longitudinal collection of socio-economic in
 -   **Volume**: Each election year is detailed with 5,567 data entries, resulting in a total of 33,188 entries over the entire period, allowing for in-depth analysis and trend identification.
 
 -   **Indicators Included**:
-
     -   `cut_dist`: A geographical identifier for districts or electoral cuts, offering spatial analysis opportunities.
     -   `elect_year`: The year of the election, anchoring the socio-economic data within a political timeline.
     -   `inc_post`: Per capita income figures post-election, reflecting the general economic well-being.
@@ -231,7 +230,7 @@ Analyzing the plot presented in [@fig-model], titled "Educational Resources," we
 ## Overview
 ```{r}
 #| label: fig-hist
-#| fig-cap: histogram
+#| fig-cap: "overview histogram"
 #| echo: false
 #| message: false
 #| warning: false
