@@ -1,26 +1,11 @@
-title: "term paper 2"
-author: "Hao Wang  Siqi Fei Xuecheng Gao"
-thanks: "Code and data are available at: https://github.com/groundUofT888/Term-Paper-2.git ; Replication on Social Science Reproduction platform available at: www.aeaweb.org/articles?id=10.1257/app.20210529"
-date: "February 12, 2024"
-date-format: long
-format: 
-  pdf: 
-    include-in-header: 
-      text: |
-        \usepackage{lscape}
+title: "term paper 2" author: "Hao Wang Siqi Fei Xuecheng Gao" thanks: "Code and data are available at: https://github.com/groundUofT888/Term-Paper-2.git ; Replication on Social Science Reproduction platform available at: www.aeaweb.org/articles?id=10.1257/app.20210529" date: "February 12, 2024" date-format: long format: pdf: include-in-header: text: \|
+
+```{=tex}
+\usepackage{lscape}
         \newcommand{\blandscape}{\begin{landscape}}
         \newcommand{\elandscape}{\end{landscape}}
-    documentclass: article
-    geometry: margin = 1in
-    abstract: " "
-    number-sections: true
-output: 
-  bookdown::pdf_document2
-toc: false
-fig_caption: yes 
-nocite: '@*'
-bibliography: references.bib
----
+```
+documentclass: article geometry: margin = 1in abstract: " " number-sections: true output: bookdown::pdf_document2 toc: false fig_caption: yes nocite: '@*' bibliography: references.bib ---
 
 ```{r setup}
 #| echo: false
@@ -64,14 +49,11 @@ Git(version 2.39.2) is used as version control.
 
 ## Features
 
-这里需要被使用到的Data/文件/数据的名字，参考教授example里的2022年第一个例子，2.2.1部分 \# Results
-\renewcommand{\arraystretch}{2}
+这里需要被使用到的Data/文件/数据的名字，参考教授example里的2022年第一个例子，2.2.1部分 \# Results \renewcommand{\arraystretch}{2}
 
 # Result
 
 Our statistical analysis began with a computation of the sample size which represents the population of Brazilians in 2022 election, with a population size of 203.1 million. We determined the sample size as 33188 in this study, ensuring the analysis result would be within an acceptable margin of error. This sample size was substantiated by Quota sampling, ensuring the representativeness of our data set.
-
-
 
 ```{r}
 #| label: figl-terc
@@ -85,7 +67,6 @@ p <- ggplot(data = election, aes(x = tse_code, y = inc_post)) +
   labs(x = "Number of registered voters", y = "Income per capita")
 p + geom_smooth(method = "lm", color = "red")
 ```
-
 
 For the above [@fig-terc] the trend line indicates a slight positive correlation between the number of registered voters and income per capita. This could suggest that in areas with more registered voters, there may be a slightly higher income per capita.
 
@@ -115,7 +96,6 @@ p
 
 The plot [@fig-excess] appears to show a slight negative correlation, as indicated by the downward trend line. This suggests that as the number of registered voters increases, the low-income rate decreases slightly. However, the wide spread of the data points indicates that many other factors likely influence the low-income rate beyond just the number of registered voters.
 
-
 ```{r}
 #| label: fig-ecoil
 #| fig-cap: Unemployment rate
@@ -138,7 +118,6 @@ Analyzing the [@fig-ecoil], there are noticeable differences. The first plot sho
 table pie chart
 
 \clearpage
-
 
 ```{r}
 #| label: fig-hist
@@ -187,10 +166,12 @@ p
 
 \newpage
 
-\blandscape
-
-\elandscape
-
+```{=tex}
+\begin{landscape}
+```
+```{=tex}
+\end{landscape}
+```
 ```{r, message=FALSE, message=FALSE, echo=FALSE, include=FALSE}
 #| label: draft code (not used)
 
