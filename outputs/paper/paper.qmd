@@ -29,8 +29,10 @@ bibliography: references.bib
 # install.packages('readr')
 install.packages("here")
 install.packages("dplyr") 
+install.packages("tidyr") 
 install.packages("tidyverse")
 installed.packages("ggplot2")
+install.packages("kableExtra") 
 # install.packages("knitr")
 
 
@@ -40,9 +42,13 @@ library(tidyverse)
 library(knitr)
 library(rdrobust)
 library(ggplot2)
+library(tidyr) 
+library(kableExtra) 
 
 data_path <- here("outputs", "edited_data", "election_cleaned.csv")
 election <- read.csv(data_path)
+data_path2 <- here("outputs", "edited_data", "schools.csv") 
+school <- read.csv(data_path2)
 ```
 
 # Introduction
@@ -51,13 +57,11 @@ In 2022, Brazil's presidential election broke new grounds with an unprecedented 
 
 # Data
 
-## Source
-
 ## Methodology
 
 This paper will replicate the survey data that was originally collected by Moya Chin, AMERICAN ECONOMIC JOURNAL: APPLIED ECONOMICS VOL. 15, NO. 3, JULY 2023 (pp. 183-209).
 
-It uses datasets constructed from four data sources: 1) Brazil municipal election data (Tribunal Superior Eleitoral, 1996-2016); 2) Brazil demographic censuses (Instituto Brasileiro de Geografia e Estatística, 1980, 1991, 2000, 2010); 3) Brazil school census (Ministério da Educação, 1997-2016); and 4) nighttime lights (National Oceanic and Atmospheric Administration, 1997-2016a,-).
+It uses data sets constructed from four data sources: 1) Brazil municipal election data (Tribunal Superior Eleitoral, 1996-2016); 2) Brazil demographic censuses (Institute Brasileiro de Geografia e Estatística, 1980, 1991, 2000, 2010); 3) Brazil school census (Ministério da Educação, 1997-2016); and 4) nighttime lights (National Oceanic and Atmospheric Administration, 1997-2016a,-).
 
 R[@citeR] is the language and environment used for this analysis,supported by the robust features of Posit Cloud as our primary integrated development environment (IDE). Library includes `ggplot2`[@ggplot2], `here`[@here].
 
@@ -67,6 +71,7 @@ Git(version 2.39.2) is used as version control.
 
 这里需要被使用到的Data/文件/数据的名字，参考教授example里的2022年第一个例子，2.2.1部分 \# Results
 \renewcommand{\arraystretch}{2}
+
 # Result
 
 Our statistical analysis began with a computation of the sample size which represents the population of Brazilians in 2022 election, with a population size of 203.1 million. We determined the sample size as 33188 in this study, ensuring the analysis result would be within an acceptable margin of error. This sample size was substantiated by Quota sampling, ensuring the representativeness of our data set.
@@ -136,17 +141,59 @@ Analyzing the [@fig-ecoil], there are noticeable differences. The first plot sho
 三个汇总一下
 
 table pie chart
+
+\clearpage
+
+
 ```{r}
-#| label: fig-statements
-#| fig-cap: "University degree"
+#| label: fig-hist
+#| fig-cap: histogram
+#| echo: false
+#| message: false
+#| warning: false
+data_long <- pivot_longer(election, cols = c("inc_0_50_post", "inc_post", "unempl_post"), 
+                          names_to = "Variable", values_to = "Value")
+
+ggplot(data_long, aes(x=Value, fill=Variable)) + 
+  geom_histogram(position="dodge", binwidth=1) + 
+  facet_wrap(~ Variable, scales = "free_x") + 
+  theme_minimal() + 
+  ggtitle("hist") +
+  xlab("Value") +
+  ylab("Frequency") +
+  scale_fill_manual(values = c("inc_0_50_post" = "blue", "inc_post" = "red", "unempl_post" = "green"))
+```
+
+```{r}
+#| label: fig-hist
+#| tbl-cap: histogram
 #| echo: false
 #| message: false
 #| warning: false
 
-p <- ggplot(data = election, aes(x = tse_code, y = edu_univ)) +
-  geom_point(color = "blue") +  # Scatter plot points
-  labs(x = "Number of registered voters", y = "University degree \n (fraction")
-p + geom_smooth(method = "lm", color = "red")
+```
+
+```{r}
+#| label: fig-model
+#| fig-cap: "umemployment rate Vs low income rate"
+#| echo: false
+#| message: false
+#| warning: false
+
+cutoff_value <-60000
+school$cutoff_side <- ifelse(school$tse_code < cutoff_value, "Below", "Above")
+
+p <- ggplot(data = school, aes(x = tse_code, y = MAT_DROP_mean)) +
+  geom_point(color = "blue") +  
+  labs(x = "Number of registered voters", y = "Drop-our rate") +
+  geom_vline(xintercept = cutoff_value, linetype = "dashed", color = "black") + # Cutoff line
+  geom_smooth(data = subset(election, tse_code < cutoff_value), 
+              aes(x = tse_code, y = inc_0_50_post), 
+              method = "lm", color = "red") + 
+  geom_smooth(data = subset(election, tse_code >= cutoff_value), 
+              aes(x = tse_code, y = inc_0_50_post), 
+              method = "lm", color = "red") 
+p 
 ```
 
 \renewcommand{\arraystretch}{1.5}
@@ -154,16 +201,6 @@ p + geom_smooth(method = "lm", color = "red")
 \newpage
 
 \blandscape
-
-```{r}
-#| label: tbl-hatemodel
-#| tbl-cap: "Tabulated weights of linear regression models 1 through 6 using ordinary least squares. In parentheses are the standard errors. Asterisks denote ranges of p-values as described in the table footer."
-#| echo: false
-#| message: false
-#| warning: false
-
-
-```
 
 \elandscape
 
@@ -176,7 +213,9 @@ p + geom_smooth(method = "lm", color = "red")
 
 ## Findings
 
-## Canadian Relevance: Case Study on Alberta's population ratios, dating markets and anti-refugee sentiments
+## Canadian Relevance: Case Study on Alberta's
+
+## population ratios, dating markets and anti-refugee sentiments
 
 ## Ethical Implications
 
