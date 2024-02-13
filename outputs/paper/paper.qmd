@@ -116,15 +116,9 @@ p <- ggplot(data = election, aes(x = tse_code, y = unempl_post)) +
 p + geom_smooth(method = "lm", color = "red")
 ```
 
-\renewcommand{\arraystretch}{1.5}
-
-\newpage
-
-\blandscape
-
 ```{r}
 #| label: fig-model
-#| fig-cap: "Tabulated weights of linear regression models 1 through 6 using ordinary least squares. In parentheses are the standard errors. Asterisks denote ranges of p-values as described in the table footer."
+#| fig-cap: "umemployment rate Vs low income rate"
 #| echo: false
 #| message: false
 #| warning: false
@@ -134,6 +128,12 @@ p <- ggplot(data = election, aes(x = inc_0_50_post, y = unempl_post)) +
   labs(x = "Low income rate", y = "Unemployment rate")
 p + geom_smooth(method = "lm", color = "red")
 ```
+
+\renewcommand{\arraystretch}{1.5}
+
+\newpage
+
+\blandscape
 
 \elandscape
 
