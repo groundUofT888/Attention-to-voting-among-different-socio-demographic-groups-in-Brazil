@@ -41,7 +41,7 @@ election <- read.csv(data_path)
 data_path2 <- here("outputs", "edited_data", "schools.csv")
 school <- read.csv(data_path2)
 ```
-
+\newpage
 \begin{center}
 \textbf{\large Abstract}
 \end{center}
@@ -58,6 +58,16 @@ This study provides valuable insights into the socio-economic and political dyna
 
 \newpage
 # Introduction
+## Two-round elections in Brazil
+Brazil's two-round electoral system is a relatively common electoral method. The mode of election is to select the winner after two votings. In the first-round voters can choose the candidate they support among multiple candidates. If one of the candidates gets more than half of the votes in the first round, then he can be directly elected. If no candidate receives more than half of the votes in the first round, a second round will take place. In the second round of voting, voters will choose between the two candidates who received the highest votes in the first round.
+Election regulations：1. Voters must be registered at least 151 days before the election. 2. Voting is compulsory for all literate Pakistani citizens between the ages of 18 and 69. 3. The election is held on the first Sunday in October.
+
+## Economic and social issues in Brazil
+Major social and economic issues in Brazil. First, Brazil’s poverty gap. There are many depressed areas in Brazil. Many people live below the poverty line and lack basic living conditions such as housing, education, medical care, and jobs. This leads to social instability. Second, the high crime rate. Some cities in Brazil have high crime rates and violence problems, such as robberies, gun proliferation, and drug trafficking. These problems mainly stem from poverty caused by uneven distribution of wealth and the deterioration of local security. Third, Brazil has high unemployment. The number of unemployed people is increasing in Brazil, and many structural unemployment results in high unemployment rates for a large number of low-skilled laborers. Also lower wages for many people worsen poverty and inequality. Fourth, there are issues with the education system. Brazil's education system has many problems, such as uneven education quality, uneven allocation of government funds for education, shortage of professors, and high dropout rates.
+
+
+## Overview
+In 2022, Brazil's presidential election broke new grounds with an unprecedented turnout of over 150 million voters, capturing the attention of national and international media. The world had seen not just about the political tactics of the candidates, but also the public's vested interest in how these elections could shape their day-to-day lives. This paper aims to study the influence of Brazil's electoral system on three critical socio-economic indicators: income level, unemployment rate and educational resources.With a comprehensive look at recent data and trends, we will investigate how the details of voting and representation create a chain reaction throughout the economy, affecting everything from job opportunities to the quality of education. By collecting together statistical analysis with real-world implications, we'll provide a clearer picture of the electoral system's impact on the Brazilian populace and discuss the broader implications of these findings on social equality and economic stability.
 
 
 # Data
