@@ -116,19 +116,6 @@ p <- ggplot(data = election, aes(x = tse_code, y = unempl_post)) +
 p + geom_smooth(method = "lm", color = "red")
 ```
 
-```{r}
-#| label: fig-statements
-#| fig-cap: "University degree"
-#| echo: false
-#| message: false
-#| warning: false
-
-p <- ggplot(data = election, aes(x = tse_code, y = edu_univ)) +
-  geom_point(color = "blue") +  # Scatter plot points
-  labs(x = "Number of registered voters", y = "University degree \n (fraction")
-p + geom_smooth(method = "lm", color = "red")
-```
-
 \renewcommand{\arraystretch}{1.5}
 
 \newpage
@@ -136,13 +123,16 @@ p + geom_smooth(method = "lm", color = "red")
 \blandscape
 
 ```{r}
-#| label: tbl-hatemodel
-#| tbl-cap: "Tabulated weights of linear regression models 1 through 6 using ordinary least squares. In parentheses are the standard errors. Asterisks denote ranges of p-values as described in the table footer."
+#| label: fig-model
+#| fig-cap: "Tabulated weights of linear regression models 1 through 6 using ordinary least squares. In parentheses are the standard errors. Asterisks denote ranges of p-values as described in the table footer."
 #| echo: false
 #| message: false
 #| warning: false
 
-
+p <- ggplot(data = election, aes(x = inc_0_50_post, y = unempl_post)) +
+  geom_point(color = "blue") +  # Scatter plot points
+  labs(x = "Low income rate", y = "Unemployment rate")
+p + geom_smooth(method = "lm", color = "red")
 ```
 
 \elandscape
@@ -156,7 +146,9 @@ p + geom_smooth(method = "lm", color = "red")
 
 ## Findings
 
-## Canadian Relevance: Case Study on Alberta's population ratios, dating markets and anti-refugee sentiments
+## Canadian Relevance: Case Study on Alberta's
+
+## population ratios, dating markets and anti-refugee sentiments
 
 ## Ethical Implications
 
