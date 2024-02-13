@@ -1,4 +1,4 @@
-# Attention to voting among different socio-demographic groups in Brazil
+# Voting Patterns and Socio-Economic Tides: A Twenty-Year Analysis of Brazil's Developmental Dynamics
 
 ## Overview
 This repo features a reproduction of Moya Chin's paper, When Do Politicians Appeal Broadly? The Economic Consequences of Electoral Rules in Brazil, containing data, R scripts, and a final PDF report . This analysis furthered the original paper's discussion of investigating the impact of Brazil's electoral rules on politicians' strategies and public goods distribution, particularly focusing on education outcomes. It contrasts single-round and two-round systems, revealing that two-round elections lead to broader geographic voter support and more equitable public services.
