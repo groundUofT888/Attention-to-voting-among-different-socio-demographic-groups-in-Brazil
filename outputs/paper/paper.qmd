@@ -1,66 +1,135 @@
-title: "term paper 2" author: "Hao Wang Siqi Fei Xuecheng Gao" thanks: "Code and data are available at: https://github.com/groundUofT888/Term-Paper-2.git ; Replication on Social Science Reproduction platform available at: www.aeaweb.org/articles?id=10.1257/app.20210529" date: "February 12, 2024" date-format: long format: pdf: include-in-header: text: \|
-
-```{=tex}
-\usepackage{lscape}
+---
+title: "Voting Patterns and Socio-Economic Tides: A Twenty-Year Analysis of Brazil's Developmental Dynamics"
+author: "Hao Wang / Siqi Fei / Xuecheng Gao"
+thanks: "Code and data are available at: https://github.com/groundUofT888/Term-Paper-2.git ; Replication on Social Science Reproduction platform available at: www.aeaweb.org/articles?id=10.1257/app.20210529"
+date: "February 12, 2024"
+date-format: long
+format: 
+  pdf: 
+    include-in-header: 
+      text: |
+        \usepackage{lscape}
         \newcommand{\blandscape}{\begin{landscape}}
         \newcommand{\elandscape}{\end{landscape}}
-```
-documentclass: article geometry: margin = 1in abstract: " " number-sections: true output: bookdown::pdf_document2 toc: false fig_caption: yes nocite: '@*' bibliography: references.bib ---
+    documentclass: article
+    geometry: margin = 1in
+    abstract: " "
+    number-sections: true
+output: 
+  bookdown::pdf_document2
+toc: false
+fig_caption: yes 
+nocite: '@*'
+bibliography: references.bib
+---
 
-```{r setup}
-#| echo: false
-#| message: false
-#| warning: false
-# install.packages('readr')
-install.packages("here")
-install.packages("dplyr") 
-install.packages("tidyverse")
-installed.packages("ggplot2")
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+# install.packages("readr")
+# install.packages("here")
+# install.packages("dplyr")
+# install.packages("tidyverse")
+# install.packages("ggplot2")
 # install.packages("knitr")
-
 
 library(here)
 library(dplyr)
 library(tidyverse)
-
 library(ggplot2)
 
 data_path <- here("outputs", "edited_data", "election_cleaned.csv")
 election <- read.csv(data_path)
-data_path2 <- here("outputs", "edited_data", "schools.csv") 
+data_path2 <- here("outputs", "edited_data", "schools.csv")
 school <- read.csv(data_path2)
 ```
 
+\begin{center}
+\textbf{\large Abstract}
+\end{center}
+
+\begin{quote}
+This paper presents a comprehensive analysis of socio-economic data for Brazil spanning from 1996 to 2016. The data, representing over 33,000 Brazilians across six electoral cycles, encompasses economic indicators such as income per capita, low-income rates, and unemployment rates, as well as political variables like electoral years and district codes. Through meticulous data visualization and statistical analysis, we examine the distributions of these key indicators and their interplay with electoral processes.
+
+Our findings reveal diverse economic conditions as indicated by the spread of income per capita and a bimodal distribution in low-income rates, suggesting the existence of two distinct economic subgroups within the population. Furthermore, the unemployment rate exhibits a concentration around lower rates with a tail extending towards higher values, highlighting the prevailing low unemployment with instances of higher rates.
+
+By integrating these economic measures with educational data like dropout rates, we uncover complex correlations and the varying impact of voter numbers on educational outcomes. We discuss the implications of these relationships, exploring how electoral districts and voter numbers correlate with socio-economic conditions.
+
+This study provides valuable insights into the socio-economic and political dynamics of Brazil, emphasizing the importance of electoral systems in shaping economic and educational landscapes. It contributes to a deeper understanding of how policy and governance can influence socio-economic development and underscores the need for nuanced policy interventions to address economic disparities and promote equitable growth.
+\end{quote}
+
+\newpage
 # Introduction
 
-In 2022, Brazil's presidential election broke new grounds with an unprecedented turnout of over 150 million voters, capturing the attention of national and international media. The world had seen not just about the political tactics of the candidates, but also the public's vested interest in how these elections could shape their day-to-day lives. This paper aims to study the influence of Brazil's electoral system on three critical socio-economic indicators: income level, unemployment rate and educational resources. With a comprehensive look at recent data and trends, we will investigate how the details of voting and representation create a chain reaction throughout the economy, affecting everything from job opportunities to the quality of education. By collecting together statistical analysis with real-world implications, we'll provide a clearer picture of the electoral system's impact on the Brazilian populace and discuss the broader implications of these findings on social equality and economic stability.
+In 2022, Brazil's presidential election broke new grounds with an unprecedented turnout of over 150 million voters, capturing the attention of national and international media. The world had seen not just about the political tactics of the candidates, but also the public's vested interest in how these elections could shape their day-to-day lives. This paper aims to study the influence of Brazil's electoral system on three critical socio-economic indicators: income level, unemployment rate and educational resources.With a comprehensive look at recent data and trends, we will investigate how the details of voting and representation create a chain reaction throughout the economy, affecting everything from job opportunities to the quality of education. By collecting together statistical analysis with real-world implications, we'll provide a clearer picture of the electoral system's impact on the Brazilian populace and discuss the broader implications of these findings on social equality and economic stability.
 
 # Data
 
+## Source
+
+This paper replicates the survey data that was originally collected by Moya Chin, AMERICAN ECONOMIC JOURNAL: APPLIED ECONOMICS VOL. 15, NO. 3, JULY 2023 (pp. 183-209).
+
+It uses data sets constructed from four data sources: - 1) Brazil municipal election data (Tribunal Superior Eleitoral, 1996-2016); - 2) Brazil demographic censuses (Institute Brasileiro de Geografia e Estatística, 1980, 1991, 2000, 2010); - ) Brazil school census (Ministério da Educação, 1997-2016); - 4) nighttime lights (National Oceanic and Atmospheric Administration, 1997-2016a,-)
+
 ## Methodology
-
-This paper will replicate the survey data that was originally collected by Moya Chin, AMERICAN ECONOMIC JOURNAL: APPLIED ECONOMICS VOL. 15, NO. 3, JULY 2023 (pp. 183-209).
-
-It uses data sets constructed from four data sources: 1) Brazil municipal election data (Tribunal Superior Eleitoral, 1996-2016); 2) Brazil demographic censuses (Institute Brasileiro de Geografia e Estatística, 1980, 1991, 2000, 2010); 3) Brazil school census (Ministério da Educação, 1997-2016); and 4) nighttime lights (National Oceanic and Atmospheric Administration, 1997-2016a,-).
 
 R[@citeR] is the language and environment used for this analysis,supported by the robust features of Posit Cloud as our primary integrated development environment (IDE). Library includes `ggplot2`[@ggplot2], `here`[@here].
 
 Git(version 2.39.2) is used as version control.
 
+
 ## Features
 
-这里需要被使用到的Data/文件/数据的名字，参考教授example里的2022年第一个例子，2.2.1部分 \# Results \renewcommand{\arraystretch}{2}
+**election.csv/election_clean.csv**
 
+The data set offers a comprehensive longitudinal collection of socio-economic indicators for Brazil from 1996 to 2016. Over the course of these twenty years, the data set captures the socio-economic fluctuations and trends across six Brazilian electoral cycles, with a granular focus on a variety of indicators.
+
+-   **Time frame**: Spanning two decades, the data set provides insights into the socio-economic changes over time, coinciding with multiple electoral events in Brazil.
+
+-   **Volume**: Each election year is detailed with 5,567 data entries, resulting in a total of 33,188 entries over the entire period, allowing for in-depth analysis and trend identification.
+
+-   **Indicators Included**:
+
+    -   `cut_dist`: A geographical identifier for districts or electoral cuts, offering spatial analysis opportunities.
+    -   `elect_year`: The year of the election, anchoring the socio-economic data within a political timeline.
+    -   `inc_post`: Per capita income figures post-election, reflecting the general economic well-being.
+    -   `inc_0_50_post`: Income figures for the bottom 50% post-election, highlighting the economic status of the less affluent demographic.
+    -   `edu_univ`: A variable intended to capture educational attainment or resources, yet unspecified in the initial data extract.
+    -   `unempl_post`: Post-election unemployment rates, indicating labor market conditions.
+    -   `tse_code`: Potentially linked to electoral zones or districts, allowing for analysis of electoral influence on socio-economic aspects.  
+    
+
+**schools.csv**
+
+The dataset includes an array of variables that shed light on the multifaceted nature of Brazil's socio-economic and political landscape:
+
+- **Electoral Dynamics**: With variables like `elect_year` and `tse_code`, the dataset chronicles the electoral events, reflecting the evolving political scene at regular four-year intervals.
+
+- **Geographic and Demographic Insights**: Indicators such as `ibge7_code`, `cut_dist`, and `pop_den_pre` provide detailed geographic and demographic information, highlighting regional disparities and population distribution.
+
+- **Economic Measures**: Economic variables such as `dep_pca_ptile_mean`, `eq_pca_ptile_mean`, `inc_T0`, and `inc_0_50_T0` reveal insights into the income levels, economic stratification, and wealth distribution within Brazil.
+
+- **Educational Outcomes**: Metrics like `MAT_DROP_mean`, `MAT_PASS_mean`, and `MAT_FAIL_mean` offer a glimpse into the educational sector's performance, a critical aspect of Brazil's socio-economic fabric.
+
+- **Social Indicators**: Social factors such as illiteracy rates (`illit_T0`), unemployment figures (`unempl_T0`), and measures of inequality (`gini_T0`) provide a deeper understanding of the societal challenges that have shaped Brazil's development over the years.
+
+\renewcommand{\arraystretch}{2}
+
+\newpage
 # Result
 
-Our statistical analysis began with a computation of the sample size which represents the population of Brazilians in 2022 election, with a population size of 203.1 million. We determined the sample size as 33188 in this study, ensuring the analysis result would be within an acceptable margin of error. This sample size was substantiated by Quota sampling, ensuring the representativeness of our data set.
+Our statistical analysis began with a computation of the sample size which represents the population of Brazilians in 2022 election, with a population size of 203.1 million. We determined the sample size as 33188 in this study, ensuring the analysis result would be within an acceptable margin of error. This sample size was substantiated by Quota sampling, ensuring the representations of our data set.
+
+The sample we used were randomly selected every 4 year from 1996 to 2016. Each year, there are 5567 Brazilians were chose to be the sample set. we generated all the sample sets and run the data analysis to study the factors.
+
+## Income per Capita
 
 ```{r}
-#| label: figl-terc
+#| label: fig-terc
 #| fig-cap: "Income per capita"
 #| echo: false
 #| message: false
 #| warning: false
+#| fig.width: 3
+#| fig.height: 2
 
 p <- ggplot(data = election, aes(x = tse_code, y = inc_post)) +
   geom_point(color = "blue") +  # Scatter plot points
@@ -68,7 +137,9 @@ p <- ggplot(data = election, aes(x = tse_code, y = inc_post)) +
 p + geom_smooth(method = "lm", color = "red")
 ```
 
-For the above [@fig-terc] the trend line indicates a slight positive correlation between the number of registered voters and income per capita. This could suggest that in areas with more registered voters, there may be a slightly higher income per capita.
+For the above [@fig-terc],from 1996 to 2016, the trend line indicates a slight positive correlation between the number of registered voters and income per capita. This could suggest that in areas with more registered voters, there may be a slightly higher income per capita.
+
+## Low Income Rate
 
 ```{r}
 #| label: fig-excess
@@ -76,6 +147,8 @@ For the above [@fig-terc] the trend line indicates a slight positive correlation
 #| echo: false
 #| message: false
 #| warning: false
+#| fig.width: 3
+#| fig.height: 2
 
 cutoff_value <-60000
 election$cutoff_side <- ifelse(election$tse_code < cutoff_value, "Below", "Above")
@@ -94,7 +167,10 @@ p
 
 ```
 
-The plot [@fig-excess] appears to show a slight negative correlation, as indicated by the downward trend line. This suggests that as the number of registered voters increases, the low-income rate decreases slightly. However, the wide spread of the data points indicates that many other factors likely influence the low-income rate beyond just the number of registered voters.
+We defined the lowest 50% income as low income. The plot [@fig-excess] appears to show a slight negative correlation, as indicated by the downward trend line. This suggests that as the number of registered voters increases, the low-income rate decreases slightly. However, the wide spread of the data points indicates that many other factors likely influence the low-income rate beyond just the number of registered voters.
+\newpage
+
+## Unemployment rate
 
 ```{r}
 #| label: fig-ecoil
@@ -102,6 +178,8 @@ The plot [@fig-excess] appears to show a slight negative correlation, as indicat
 #| echo: false
 #| message: false
 #| warning: false
+#| fig.width: 3
+#| fig.height: 2
 
 p <- ggplot(data = election, aes(x = tse_code, y = unempl_post)) +
   geom_point(color = "blue") +  # Scatter plot points
@@ -109,42 +187,18 @@ p <- ggplot(data = election, aes(x = tse_code, y = unempl_post)) +
 p + geom_smooth(method = "lm", color = "red")
 ```
 
-Analyzing the [@fig-ecoil], there are noticeable differences. The first plot shows a vast spread of unemployment rates across varying numbers of registered voters, with a trend line that remains relatively flat. This suggests there isn't a strong or clear correlation between the number of registered voters and the unemployment rate within the represented data set.
+Analyzing the [@fig-ecoil], there are noticeable differences. The plot shows a vast spread of unemployment rates across varying numbers of registered voters, with a trend line that remains relatively flat. This suggests there isn't a strong or clear correlation between the number of registered voters and the unemployment rate within the represented data set.
 
--drop out率的分析
-
-三个汇总一下
-
-table pie chart
-
-\clearpage
-
-```{r}
-#| label: fig-hist
-#| fig-cap: histogram
-#| echo: false
-#| message: false
-#| warning: false
-data_long <- pivot_longer(election, cols = c("inc_0_50_post", "inc_post", "unempl_post"), 
-                          names_to = "Variable", values_to = "Value")
-
-ggplot(data_long, aes(x=Value, fill=Variable)) + 
-  geom_histogram(position="dodge", binwidth=1) + 
-  facet_wrap(~ Variable, scales = "free_x") + 
-  theme_minimal() + 
-  ggtitle("hist") +
-  xlab("Value") +
-  ylab("Frequency") +
-  scale_fill_manual(values = c("inc_0_50_post" = "blue", "inc_post" = "red", "unempl_post" = "green"))
-
-```
+## Educational Resources
 
 ```{r}
 #| label: fig-model
-#| fig-cap: "umemployment rate Vs low income rate"
+#| fig-cap: "education"
 #| echo: false
 #| message: false
 #| warning: false
+#| fig.width: 3
+#| fig.height: 2
 
 cutoff_value <-60000
 school$cutoff_side <- ifelse(school$tse_code < cutoff_value, "Below", "Above")
@@ -162,6 +216,43 @@ p <- ggplot(data = school, aes(x = tse_code, y = MAT_DROP_mean)) +
 p 
 ```
 
+Analyzing the plot presented in [@fig-model], titled "Educational Resources," we see a substantial variation in dropout rates across a range of registered voter numbers. The dual trend lines, both descending, suggest that areas with more registered voters tend to have lower dropout rates, yet the change in the slope at around the 50,000 voter mark could imply different dynamics in larger districts. Despite the overall negative correlation, the broad spread of the data points, especially in regions with fewer voters, indicates that voter numbers alone may not be a definitive predictor of dropout rates. The relationship is not uniform across the dataset, highlighting the complexity of factors that influence educational outcomes.
+\newpage
+
+## Overview
+```{r}
+#| label: fig-hist
+#| fig-cap: histogram
+#| echo: false
+#| message: false
+#| warning: false
+#| fig.width: 8
+#| fig.height: 7
+
+data_long <- pivot_longer(election, cols = c("inc_0_50_post", "inc_post", "unempl_post"), 
+                          names_to = "Variable", values_to = "Value") %>%
+  mutate(DescriptiveLabel = case_when(
+    Variable == "inc_0_50_post" ~ "Low Income",
+    Variable == "inc_post" ~ "Income per Capita",
+    Variable == "unempl_post" ~ "Unemployment Rate"
+  ))
+
+ggplot(data_long, aes(x=Value, fill=Variable)) + 
+  geom_histogram(position="dodge", binwidth=1) + 
+  facet_wrap(~ DescriptiveLabel, scales = "free_x") + 
+  theme_minimal() + 
+  ggtitle("Distribution of Economic Indicators") +
+  xlab("Value") +
+  ylab("Frequency") +
+  scale_fill_manual(values = c("inc_0_50_post" = "blue", "inc_post" = "red", "unempl_post" = "green"),
+  labels = c("Low Income Rate", "Income per Capita", "Unemployment Rate")
+)
+
+
+```
+
+
+Analyzing the histogram in [@fig-hist], we see distinct distributions for three key economic indicators. The Income per Capita is broadly spread, suggesting varied economic conditions. In contrast, the Low Income Rate displays a bimodal distribution, hinting at two prevalent income groups within the population. The Unemployment Rate is predominantly concentrated around a lower value but with a long tail toward higher rates, indicating that most of the population experiences lower unemployment, with fewer instances of high unemployment. This visual representation underscores the complexity of economic health and inequality within the dataset.
 \renewcommand{\arraystretch}{1.5}
 
 \newpage
