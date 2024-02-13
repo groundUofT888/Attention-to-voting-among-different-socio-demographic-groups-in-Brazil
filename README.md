@@ -1,4 +1,4 @@
-# term paper
+# Attention to voting among different socio-demographic groups in Brazil
 
 ## Overview
 
