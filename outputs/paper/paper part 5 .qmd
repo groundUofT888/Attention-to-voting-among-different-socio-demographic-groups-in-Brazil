@@ -1,0 +1,184 @@
+---
+title: "term papaer 2"
+author: "Hao wang"
+thanks: "Code and data are available at: https://github.com/groundUofT888/Term-Paper-2.git ; Replication on Social Science Reproduction platform available at: www.aeaweb.org/articles?id=10.1257/app.20210529"
+date: "February 12, 2024"
+date-format: long
+format: 
+  pdf: 
+    include-in-header: 
+      text: |
+        \usepackage{lscape}
+        \newcommand{\blandscape}{\begin{landscape}}
+        \newcommand{\elandscape}{\end{landscape}}
+    documentclass: article
+    geometry: margin = 1in
+    abstract: " "
+    number-sections: true
+output: 
+  bookdown::pdf_document2
+toc: false
+fig_caption: yes 
+nocite: '@*'
+bibliography: references.bib
+---
+
+```{r setup}
+#| echo: false
+#| message: false
+#| warning: false
+# install.packages('readr')
+install.packages("here")
+install.packages("dplyr") 
+install.packages("tidyverse")
+installed.packages("ggplot2")
+# install.packages("knitr")
+
+
+library(here)
+library(dplyr)
+library(tidyverse)
+library(knitr)
+library(rdrobust)
+library(ggplot2)
+
+data_path <- here("outputs", "edited_data", "election_cleaned.csv")
+election <- read.csv(data_path)
+```
+
+# Introduction
+
+Two-round elections in Brazil.
+Brazil's two-round electoral system is a relatively common electoral method. The mode of election is to select the winner after two votings. In the first-round voters can choose the candidate they support among multiple candidates. If one of the candidates gets more than half of the votes in the first round, then he can be directly elected. If no candidate receives more than half of the votes in the first round, a second round will take place. In the second round of voting, voters will choose between the two candidates who received the highest votes in the first round.
+Election regulations：1. Voters must be registered at least 151 days before the election. 2. Voting is compulsory for all literate Pakistani citizens between the ages of 18 and 69. 3. The election is held on the first Sunday in October.
+
+Economic and social issues in Brazil.
+Major social and economic issues in Brazil. First, Brazil’s poverty gap. There are many depressed areas in Brazil. Many people live below the poverty line and lack basic living conditions such as housing, education, medical care, and jobs. This leads to social instability. Second, the high crime rate. Some cities in Brazil have high crime rates and violence problems, such as robberies, gun proliferation, and drug trafficking. These problems mainly stem from poverty caused by uneven distribution of wealth and the deterioration of local security. Third, Brazil has high unemployment. The number of unemployed people is increasing in Brazil, and many structural unemployment results in high unemployment rates for a large number of low-skilled laborers. Also lower wages for many people worsen poverty and inequality. Fourth, there are issues with the education system. Brazil's education system has many problems, such as uneven education quality, uneven allocation of government funds for education, shortage of professors, and high dropout rates.
+
+
+
+# Data
+
+## Source
+
+## Methodology
+
+This paper will replicate the survey data that was originally collected for
+
+## Features
+
+# Results
+
+Data from Wave 4 of surveys were used to show correlation
+
+\renewcommand{\arraystretch}{2}
+
+```{r}
+#| label: figl-terc
+#| fig-cap: "Income per capita"
+#| echo: false
+#| message: false
+#| warning: false
+
+p <- ggplot(data = election, aes(x = tse_code, y = inc_post)) +
+  geom_point(color = "blue") +  # Scatter plot points
+  labs(x = "Number of registered voters", y = "Income per capita")
+p + geom_smooth(method = "lm", color = "red")
+```
+
+```{r}
+#| label: fig-excess
+#| fig-cap: "Low income rate"
+#| echo: false
+#| message: false
+#| warning: false
+
+cutoff_value <-60000
+election$cutoff_side <- ifelse(election$tse_code < cutoff_value, "Below", "Above")
+
+p <- ggplot(data = election, aes(x = tse_code, y = inc_0_50_post)) +
+  geom_point(color = "blue") +  # Scatter plot points
+  labs(x = "Number of registered voters", y = "Low income rate") +
+  geom_vline(xintercept = cutoff_value, linetype = "dashed", color = "black") + # Cutoff line
+  geom_smooth(data = subset(election, tse_code < cutoff_value), 
+              aes(x = tse_code, y = inc_0_50_post), 
+              method = "lm", color = "red") + 
+  geom_smooth(data = subset(election, tse_code >= cutoff_value), 
+              aes(x = tse_code, y = inc_0_50_post), 
+              method = "lm", color = "yellow") 
+p 
+
+```
+
+\clearpage
+
+```{r}
+#| label: fig-ecoil
+#| fig-cap: Unemployment rate
+#| echo: false
+#| message: false
+#| warning: false
+
+p <- ggplot(data = election, aes(x = tse_code, y = unempl_post)) +
+  geom_point(color = "blue") +  # Scatter plot points
+  labs(x = "Number of registered voters", y = "Unemployment rate")
+p + geom_smooth(method = "lm", color = "red")
+```
+
+```{r}
+#| label: fig-statements
+#| fig-cap: "University degree"
+#| echo: false
+#| message: false
+#| warning: false
+
+p <- ggplot(data = election, aes(x = tse_code, y = edu_univ)) +
+  geom_point(color = "blue") +  # Scatter plot points
+  labs(x = "Number of registered voters", y = "University degree \n (fraction")
+p + geom_smooth(method = "lm", color = "red")
+```
+
+\renewcommand{\arraystretch}{1.5}
+
+\newpage
+
+\blandscape
+
+```{r}
+#| label: tbl-hatemodel
+#| tbl-cap: "Tabulated weights of linear regression models 1 through 6 using ordinary least squares. In parentheses are the standard errors. Asterisks denote ranges of p-values as described in the table footer."
+#| echo: false
+#| message: false
+#| warning: false
+
+
+```
+
+\elandscape
+
+```{r, message=FALSE, message=FALSE, echo=FALSE, include=FALSE}
+#| label: draft code (not used)
+
+```
+
+# Discussion
+
+## Findings
+
+
+## Ethical Implications
+  
+  The datasets and original sources used in their paper come from Brazil demographic censuses and Brazil school census. Demography refers to summarizing the demographic characteristics of a community, such as gender, age, race, education level, socioeconomic status, etc. Ethical issues may arise if used improperly during the collection, analysis, interpretation, and dissemination of demographic data. Demographics impact minority communities, which can lead to structural inequalities. When analyzing demographic variables, the author selected specific variables for analysis based on his research questions and hypotheses. However, these highly characteristic data will have a negative impact on some social groups. For example, high income, low income, dropout rate, etc. This may reinforce social hierarchies in which social groups are compared, exacerbating prejudice and stereotypes and causing harm to minority populations. In the paper, the author compares the interest of high-income people and low-income people in voting. This may cause certain social conflicts and encourage the idea of inequality among different groups. When explaining differences between social groups in the conclusion of the author's paper, it can lead to increased social conflict.
+  
+
+## Accounting for Bias
+
+In the paper, Moya Chin proposes a stylized model that explores the motivations of politicians to appeal to a wider range of voters in elections and to provide public goods in different ways. The author uses this model to observe the Economic Consequences of Electoral Rules in Brazil. The data used by the author mainly comes from Brazil demographic censuses, Brazil school Census, and Brazil municipal election data. Bias can occur when collecting quantitative and qualitative data. The problem with these data sets and original sources is that the variables used by the authors to construct the equipment index come from the Brazilian School Census and the Brazilian demographic censuses. Considering Brazil's national conditions and the government's influence on the region, Response Bias may exist in the data set of Brazil demographic censuses. Census respondents may choose not to participate in the census or provide inaccurate information because of privacy concerns or distrust of the government. The school census data comes from students in schools. Considering the lack of educational resources in poor areas of Brazil, there will be a sampling frame bias. The earliest census data used by the author is from 1980. At that time, in some remote or poor areas, it may be more difficult for enumerators to reach or collect data due to lack of infrastructure and information technology. This may lead to underestimation or inaccurate population data in these areas, and the sample may not be representative of the characteristics of the entire population.
+
+## Limitations
+
+## Future Research
+
+\clearpage
+
+# References {.unnumbered}
